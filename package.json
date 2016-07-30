@@ -1,0 +1,25 @@
+{
+  "name": "urlshortener",
+  "version": "1.0.0",
+  "description": "url shortening service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Coby-T/urlshortener-api.git"
+  },
+  "keywords": [
+    "url"
+  ],
+  "author": "Coby Tao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Coby-T/urlshortener-api/issues"
+  },
+  "homepage": "https://github.com/Coby-T/urlshortener-api#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
