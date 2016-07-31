@@ -23,18 +23,20 @@ module.exports = function (app, db, path) {
         console.log("Retrieving URL redirect for " + req.params.shortUrl);
         
         var shortUrl = req.params.shortUrl;
-        var websites = db.collection('websites');
-        websites.findOne({
-            shortURL: shortUrl
-        }, function (err, result) {
-            if (err) throw err;
-            if (result) {
-                res.redirect(result.fullURL);
-            }
-            else {
-                res.send("Error: Could not find a matching URL in our database.");
-            }
-        });
+        if (shortUrl != "favicon.ico" || shortUrl != "index.css"){
+            var websites = db.collection('websites');
+            websites.findOne({
+                shortURL: shortUrl
+            }, function (err, result) {
+                if (err) throw err;
+                if (result) {
+                    res.redirect(result.fullURL);
+                }
+                else {
+                    res.send("Error: Could not find a matching URL in our database.");
+                }
+            });
+        }
     });
     
     app.get('/new/:fullUrl(*)', function(req, res) {
