@@ -4,7 +4,7 @@ var mongo = require('mongodb').MongoClient;
 var api = require("./api/url-shortener.js");
 var path = require('path');
 
-var url = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/url-shortener';
+var url = process.env.MONGOLAB_URI;
 var port = process.env.PORT || 8080;
 
 mongo.connect(url, function(err, db) {

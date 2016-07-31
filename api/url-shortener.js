@@ -6,7 +6,7 @@ module.exports = function (app, db, path) {
         var guidePath = path.join(__dirname, "index.html");
         res.sendFile(guidePath, function (err) {
             if (err) {
-                throw err;
+                throw new Error("Could not send readme");
             }
             else {
                 console.log("Readme sent");
@@ -19,9 +19,6 @@ module.exports = function (app, db, path) {
     });
     
     app.get('/:shortUrl', function(req, res) {
-        
-        console.log("Retrieving URL redirect for " + req.params.shortUrl);
-        
         var shortUrl = req.params.shortUrl;
         if (shortUrl != "favicon.ico" || shortUrl != "index.css"){
             var websites = db.collection('websites');
@@ -40,9 +37,6 @@ module.exports = function (app, db, path) {
     });
     
     app.get('/new/:fullUrl(*)', function(req, res) {
-        
-        console.log("Shortening URL for " + req.params.fullUrl);
-        
         if (validUrl(req.params.fullUrl)) {
             var urlObj = {};
             var websites = db.collection('websites');
