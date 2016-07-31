@@ -20,7 +20,7 @@ module.exports = function (app, db, path) {
     
     app.get('/:shortUrl', function(req, res) {
         var shortUrl = req.params.shortUrl;
-        if (shortUrl != "favicon.ico" || shortUrl != "index.css"){
+        if (shortUrl != "favicon.ico"){
             var websites = db.collection('websites');
             websites.findOne({
                 shortURL: shortUrl
